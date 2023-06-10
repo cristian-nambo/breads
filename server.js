@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
+const mongoose  = require('mongoose')
 
 
 
@@ -14,7 +15,12 @@ app.get('/', (req, res) => {
     res.send('Welcome to an Awesome App about Breads!')
 })
 
-// Breads
+mongoose.connect(process.env.MONGO_URI, 
+    {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+        console.log('connected to mongoDB: ', process.env.MONGO_URI)
+    })
+  
+// Breads //// Middleware
 const breadsController = require('./controllers/breads_controller.js')
 app.use(methodOverride('_method'))
 app.use('/breads', breadsController)
