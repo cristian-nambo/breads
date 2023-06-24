@@ -27,7 +27,7 @@ app.use('/breads', breadsController)
 const bakersController = require('./controllers/bakers_controller')
 app.use('/bakers', bakersController)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3003
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true},
     () => {console.log('connected to : ', process.env.MONGO_URI)}
     )
